@@ -15,7 +15,7 @@ namespace SistemaWeb_PortalTrabajo.Models
         public string? direccion  { get; set; }
         public string? contacto  { get; set; }
         public byte[]? foto { get; set; }
-        public DateOnly? fecha_nacimiento  { get; set; }
+        public DateTime fecha_nacimiento  { get; set; }
 
         public DateTime? fechaCreacion { get; set; }
 
