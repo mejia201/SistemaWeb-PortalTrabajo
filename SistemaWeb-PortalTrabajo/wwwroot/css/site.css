@@ -1,18 +1,70 @@
-html {
-  font-size: 14px;
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html, body {
+    background-image: url('../img/codioful.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.container {
+    height: 100%;
+    align-content: center;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.card {
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
 }
 
-body {
-  margin-bottom: 60px;
+
+.card-header h3 {
+    color: white;
 }
+
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #007fff;
+    color: black;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+    color: white;
+}
+
+    .remember input {
+        width: 20px;
+        height: 20px;
+        margin-left: 15px;
+        margin-right: 5px;
+    }
+
+.login_btn {
+    color: black;
+    background-color: #007fff;
+    width: 200px;
+}
+
+    .login_btn:hover {
+        color: black;
+        background-color: white;
+    }
+
+.links {
+    color: white;
+}
+
+    .links a {
+        margin-left: 4px;
+    }

@@ -1,7 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model List<Trabajo>
+
+
+@{
+
     Layout = null; 
+
+
 }
 
 <!DOCTYPE html>
@@ -14,21 +18,31 @@
 
     <title>EmpleoConecta  |  Index</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 
+
+
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
- 
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">  
   <link href="assets/css/style.css" rel="stylesheet">
+
+
+
 </head>
 
 <body>
@@ -41,22 +55,20 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Categorias</a></li>*
-          <li><a class="nav-link scrollto" href="#services">Publicar Empleos</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Trabajos</a></li>
-          @*<li><a class="nav-link scrollto" href="#team">Usuarios</a></li>*@
-                    <li class="dropdown">
-                     <a href="#"><span>@ViewBag.TableEmpresa</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto" href="#about">Sobre nosotros</a></li>
+          <li><a class="nav-link scrollto" href="#empleos">Empleos</a></li>
+          <li><a class="nav-link scrollto " href="#recursos">Recursos</a></li>
+          <li><a class="nav-link scrollto" href="#categorias">Categorias</a></li>
+           <li class="dropdown">
+          <a href="#"><span>@ViewBag.TableEmpresa</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
 
               <li><a asp-controller="Home" asp-action="LoginEmpresa">Login</a></li>
-              <li><a asp-controller="Home" asp-action="Index">Op 1</a></li>
-              <li><a asp-controller="Home" asp-action="Index">Op 2</a></li>
+              <li><a asp-controller="Home" asp-action="SignUpEmpresa">Registro</a></li>
+              <li><a asp-controller="Home" asp-action="Index">Opcion 3</a></li>
               
             </ul>
           </li>
-
-          <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -129,9 +141,9 @@
               trabajo que más te guste y asi poder cumplir tu sueño.
             </p>
             <ul>
-              <li><i class="ri-check-double-line"></i>Cat 1</li>
-              <li><i class="ri-check-double-line"></i>Cat 2</li>
-              <li><i class="ri-check-double-line"></i>Cat 3</li>
+              <li><i class="ri-check-double-line"></i>Variedad de Categorías</li>
+              <li><i class="ri-check-double-line"></i>Variedad de Empleos</li>
+              <li><i class="ri-check-double-line"></i>Múltiples empresas asociadas con nosotros.</li>
             </ul>
             <p>
               Nosotros te apoyamos en todo el proceso y te damos las herramientas para que logres encontrar el empleo
@@ -165,262 +177,184 @@
     </section>
 
 
-    <section id="features" class="features">
-      <div class="container" data-aos="fade-up">
+        <section id="features" class="features">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Sección de Empresas</h2>
+                    <p>Empresas asociadas a muestra página web</p>
+                </div>
 
-        <div class="row">
-          <div class="image col-lg-6" style='background-image: url("assets/img/features.jpg");' data-aos="fade-right"></div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
-            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-receipt"></i>
-              <h4>Est labore ad</h4>
-              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-cube-alt"></i>
-              <h4>Harum esse qui</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-images"></i>
-              <h4>Aut occaecati</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-shield"></i>
-              <h4>Beatae veritatis</h4>
-              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-            </div>
-          </div>
-        </div>
+                <div class="row" id="contenedor-empresas">
 
-      </div>
-    </section>
+                    <div class="col-lg-6 col-md-3 d-flex align-items-stretch">
+					@foreach (var empresaCantidad in ViewBag.EmpresasConCantidad)
+					{
+                            <div class="icon-box border border-warning" style="margin: 10px; padding: 10px;">
+                                <div class="icon"><i class="bx bx-arch"></i></div>
+                                <h4><a class="text-center fw-bold">@empresaCantidad.Empresa.nombre_empresa</a></h4>
+                                <div class="d-flex align-items-center">
+                                    <p class="text-center ms-2" style="text-align: center !important;">Empleos publicados </p>
+                                    <span class="badge bg-primary rounded-pill" style="position: relative; top: -10px">@empresaCantidad.CantidadTrabajos</span>
+                                </div>
+                            </div>
 
-    <section id="services" class="services">
+                            }
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="empleos" class="empleos">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Services</h2>
-          <p>Check our Services</p>
+          <h2>Sección de Empleos</h2>
+          <p>Últimos Empleos Publicados</p>
         </div>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div>
+                <div id="contenedor-empleos" class="row">
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Sed ut perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3 mt-3 mb-3">
+                            <div class="card border-info mb-1" style="max-width: 18rem;">
+                                <div class="card-header">
+                                    <h5 class="card-title fw-bold text-center mt-2">@item.titulo</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-subtitle text-muted text-center">@item.ubicacion</h6>
+                                    <p class="card-text text-center mt-3">@item.descripcion</p>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item fw-bold text-center">Empresa: @item.Empresa.nombre_empresa</li>
+                                        <li class="list-group-item fw-bold text-center">Salario: @item.salario</li>
+                                        <li class="list-group-item fw-bold text-center">Fecha Publicación: @item.fechaPublicacion</li>
+                                    </ul>
+                                    <div class="text-center">
+                                        <button class="btn btn-primary mt-4 mb-3 accordion" data-target="#collapse-@item.idTrabajo">Detalle</button>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
+                                    </div>
+                                    <hr>
+									<div id="collapse-@item.idTrabajo" style="display: none;">
+										<div class="card-body">
+											<h5 class="text-center">Información adicional sobre el empleo</h5>
+											<h6 class="text-center fw-bold mt-3">Requisitos:</h6>
+											<h6 class="text-center fw-light mb-2">@item.requisitos</h6>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
+											<h6 class="text-center fw-bold">Tipo de Contrato:</h6>
+											<h6 class="text-center fw-light">@item.tipoContrato</h6>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-slideshow"></i></div>
-              <h4><a href="">Dele cardo</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-            </div>
-          </div>
+										</div>
+									</div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-arch"></i></div>
-              <h4><a href="">Divera don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div>
+                                </div>
+                                @if (@item.estado == "Disponible")
+                                {
+                                    <div class="card-footer bg-success text-white fw-bold text-center">
+                                        @item.estado
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="card-footer bg-danger text-white fw-bold text-center">
+                                        @item.estado
+                                    </div>
+                                }
+                                
 
-        </div>
+                            </div>
+                        </div>
+                      
+                    }
 
+                
+                </div>
       </div>
     </section>
+
+
 
 
     <section id="cta" class="cta">
       <div class="container" data-aos="zoom-in">
 
         <div class="text-center">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn" href="#">Call To Action</a>
+         <h3>Inicia sesión</h3>
+          <p>Para poder ver tus ofertas de trabajo deberás ingresar como usuario para poder visualizar tú perfil.</p>
+          <a class="cta-btn" asp-controller="Home" asp-action="Login">Iniciar sesión</a>
         </div>
 
       </div>
     </section>
 
-    
-    <section id="portfolio" class="portfolio">
+
+        <section id="recursos" class="recursos">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Check our Portfolio</p>
+           <h2>Recursos</h2>
+          <p>Estos recursos pueden ser de tú utilidad.</p>
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                                        <img src="~/img/udemy.png" class="img-fluid" style="max-height: 110px; max-width: 110px; object-fit: contain;">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Udemy</h5>
+                                        <p class="card-text">Udemy es una plataforma de cursos online, que fue fundada en el año 2010.</p>
+                                        <a href="https://www.udemy.com/" class="card-link" target="_blank">Visitar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-md-4">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                                        <img src="~/img/coursera.png" class="img-fluid" style="max-height: 110px; max-width: 110px; object-fit: contain;">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Coursera</h5>
+                                        <p class="card-text">Es una plataforma de educación virtual que ofrece cursos de muy diversos temas en distintos idiomas, siendo predominante el inglés. </p>
+                                        <a href="https://www.coursera.org/courses?query=free&irclickid=QZK30CSHyxyNWLdQi2TCPwbqUkASmrSWMSSIT00&irgwc=1&utm_medium=partners&utm_source=impact&utm_campaign=3190338&utm_content=b2c" class="card-link" target="_blank">Visitar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    <div class="col-md-4">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+                                        <img src="~/img/linkedin.png" class="img-fluid" style="max-height: 110px; max-width: 110px; object-fit: contain;">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Opportunity LinkedIn</h5>
+                                        <p class="card-text">LinkedIn te pone en bandeja la oportunidad de adquirir las aptitudes para estos empleos que siempre tienen demanda con cursos de LinkedIn Learning gratis.</p>
+                                        <a href="https://opportunity.linkedin.com/es-es/skills-for-in-demand-jobs" class="card-link" target="_blank">Visitar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
 
       </div>
     </section>
@@ -433,40 +367,40 @@
           <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
           <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
             <div class="content d-flex flex-column justify-content-center">
-              <h3>Voluptatem dignissimos provident quasi</h3>
+              <h3>Contamos con un contador sobre toda la información que manejamos. </h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                  Te podemos brindar ciertas estadisticas que muestran el total de nuestros usuarios, empresas, categorias y empleos.
               </p>
               <div class="row">
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
-                    <i class="bi bi-emoji-smile"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2" class="purecounter"></span>
-                    <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
+                    <i class="bi bi-person-circle"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalUsuarios" data-purecounter-duration="3" class="purecounter"></span>
+                    <p><strong>Usuarios: </strong> La cantidad de usuarios registrados en nuestro sitio web.</p>
                   </div>
                 </div>
 
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
-                    <i class="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2" class="purecounter"></span>
-                    <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
+                    <i class="bi bi-building"></i>
+                   <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalEmpresas" data-purecounter-duration="3" class="purecounter"></span>
+                    <p><strong>Empresas: </strong> Cantidad de empresas registradas que ofrecen sus empleos a nuestros usuarios.</p>
                   </div>
                 </div>
 
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
-                    <i class="bi bi-clock"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="4" class="purecounter"></span>
-                    <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
+                  <i class="bi bi-card-checklist"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalCategorias" data-purecounter-duration="3" class="purecounter"></span>
+                    <p><strong>Categorias: </strong> Número de categorias que se encuentran para realizar búsquedas de empleos.</p>
                   </div>
                 </div>
 
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-award"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="4" class="purecounter"></span>
-                    <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalTrabajos" data-purecounter-duration="3" class="purecounter"></span>
+                    <p><strong>Empleos: </strong> Cantidad de empleos encontrados en nuestra página</p>
                   </div>
                 </div>
               </div>
@@ -477,301 +411,54 @@
       </div>
     </section>
 
-
-    <section id="testimonials" class="testimonials">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section>
-
-  
-    <section id="team" class="team">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Team</h2>
-          <p>Check our Team</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+        <section id="categorias" class="categorias">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Categorias</h2>
+                    <p>Nuestras categorias para que busques tú empleo ideal.</p>
                 </div>
-              </div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                <div id="contenedor-categoria" class="row justify-content-center">
+                    <div class="col-md-3 mt-3 mb-3">
+                        <ul class="list-inline" style="list-style-type: disc;">
+                            @foreach (var categoria in ViewBag.Categorias)
+                            {
+                                if (ViewBag.Categorias.IndexOf(categoria) < 6)
+                                {
+                                    <li>@categoria.Categoria.nombre</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-md-3 mt-3 mb-3">
+                        <ul class="list-inline" style="list-style-type: disc;">
+                            @foreach (var categoria in ViewBag.Categorias)
+                            {
+                                if (ViewBag.Categorias.IndexOf(categoria) >= 6 && ViewBag.Categorias.IndexOf(categoria) <= 11)
+                                {
+                                    <li>@categoria.Categoria.nombre</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-md-3 mt-3 mb-3">
+                        <ul class="list-inline" style="list-style-type: disc;">
+                            @foreach (var categoria in ViewBag.Categorias)
+                            {
+                                if (ViewBag.Categorias.IndexOf(categoria) >= 12)
+                                {
+                                    <li>@categoria.Categoria.nombre</li>
+                                }
+                            }
+                        </ul>
+                    </div>
                 </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-              </div>
             </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img">
-                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
- 
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contacto</h2>
-          <p>Contáctate con nosotros</p>
-        </div>
- 
-        <div class="row mt-5">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Locacion:</h4>
-                <p>Santa Ana, El Salvador</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>EmpleoConecta@example.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Llama:</h4>
-                <p>+503 7759-5620</p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Cargando</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Tu mensaje fue enviado, Gracias!</div>
-              </div>
-              <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
+        </section>
 
   </main>
 
 
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-                 <h3>EmpleoConecta<span>.</span></h3>
-              <p>
-                Santa Ana <br>
-                , El Salvador<br><br>
-                <strong>Telefono:</strong> +503 7759-5620<br>
-                <strong>Email:</strong> empleoConecta@example.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-
-          @*<div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Nuestros Servicios</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>*@
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Enviar">
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
+  <footer id="footer" class="text-center">
     <div class="container">
       <div class="copyright">
                 &copy; Copyright <strong><span>EmpleoConecta</span></strong>. All Rights Reserved
@@ -793,8 +480,31 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.accordion').click(function() {
+                var target = $(this).data('target');
+                $(target).slideToggle();
+            });
+        });
+    </script>
+    
 
   <script src="assets/js/main.js"></script>
+
+
+
 
 </body>
 
