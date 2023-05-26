@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SistemaWeb_PortalTrabajo.Context;
 
@@ -17,15 +18,18 @@ builder.Services.AddDbContext<portalTrabajoDbContext>(opt =>
         );
 
 
+
 var app = builder.Build();
 
-
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
