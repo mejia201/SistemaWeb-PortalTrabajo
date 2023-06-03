@@ -26,9 +26,16 @@ namespace SistemaWeb_PortalTrabajo.Models
         public string? estado { get; set; }
 
 
-        [ForeignKey("idEmpresa")]
+        public int idCategoria { get; set; }
+
+
+		[ForeignKey("idEmpresa")]
         public Empresa Empresa { get; set; }
 
 
-    }
+		[ForeignKey("idCategoria")]
+		public Categoria Categoria { get; set; }
+
+
+	}
 }

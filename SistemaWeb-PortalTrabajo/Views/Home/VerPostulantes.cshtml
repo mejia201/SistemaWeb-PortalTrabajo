@@ -1,0 +1,89 @@
+﻿@model List<DetalleTrabajoViewModel>
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<head>
+	<link href="~/css/formato.css" rel="stylesheet" />
+</head>
+
+
+<div class="container text-center">
+
+	<div class="mb-5">
+		<h3 class="d-inline-block align-middle mr-3 mt-1">Listado de los postulantes para el empleo seleccionado.</h3>
+	</div>
+
+</div>
+
+<div class="container">
+    <div class="row row-flex">
+        @if (Model.Any())
+        {
+
+            @foreach (var detalle in Model)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="price-table pt-bg-green">
+                        <div>
+                            <span>Postulante</span>
+                            <span>@detalle.Nombre, @detalle.Apellido</span>
+                            <span>Detalles del Postulante</span>
+                        </div>
+                        <ul>
+                            <li>Correo: @detalle.Correo</li>
+                            <li>Fecha solicitud: @detalle.FechaSolicitud</li>
+                            <li>Estado: @detalle.Estado</li>
+                        </ul>
+                        <a href="#" data-toggle="modal" data-target="#curriculumModal-@detalle.IdPostulacion" data-idpostulante="@detalle.IdPostulacion">Ver Curriculum</a>
+                    </div>
+                </div>
+
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="curriculumModal-@detalle.IdPostulacion" tabindex="-1" role="dialog" aria-labelledby="curriculumModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="curriculumModalLabel-@detalle.IdPostulacion">Curriculum del postulante</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-center fw-bold">Titulo Profesional: @detalle.TituloProfesional</p>
+                                <p class="text-center fw-bold">Habilidades: @detalle.Habilidades</p>
+                                <p class="text-center fw-bold">Educación: @detalle.Educacion</p>
+                                <p class="text-center fw-bold">Certificaciones: @detalle.Certificaciones</p>
+                                <p class="text-center fw-bold">Experiencia Laboral: @detalle.ExperienciaLaboral</p>
+                                <p class="text-center fw-bold mt-3">Contacto: @detalle.Contacto</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                    $('#curriculumModal').on('show.bs.modal', function (e) {
+                    var idPostulante = $(e.relatedTarget).data('idpostulante');
+                    });
+                    });
+                </script>
+
+            }
+
+        }
+        else
+        {
+            <p class="text-center">No tienes postulantes para este trabajo.</p>
+
+        }
+    </div>
+</div>
+
+
+

@@ -1,0 +1,74 @@
+﻿@model List<Trabajo>
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<div class="container text-center">
+
+	<div class="mb-5">
+		<h1 class="d-inline-block align-middle mr-3 mt-1">Listado de tus trabajos publicados.</h1>
+	</div>
+
+</div>
+
+<div class="row">
+	 @if (Model.Any())
+	{
+		@foreach (var item in Model)
+		{
+			<div class="col-md-4 mt-3 mb-1">
+				<div class="card border-info mb-1" style="max-width: 18rem;">
+					<div class="card-header">
+						<h5 class="card-title fw-bold text-center mt-2">@item.titulo</h5>
+					</div>
+					<div class="card-body">
+						<h6 class="card-subtitle text-muted text-center">Ubicación: @item.ubicacion</h6>
+						<p class="card-text text-center mt-3">Contrato: @item.tipoContrato</p>
+						<p class="card-text text-center mt-3">Requisitos: @item.requisitos</p>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item fw-bold text-center">Salario: @item.salario</li>
+							<li class="list-group-item fw-bold text-center">Fecha Publicación: @item.fechaPublicacion</li>
+							<li class="list-group-item fw-bold text-center">Categoria: @item.Categoria.nombre</li>
+						</ul>
+						<div class="text-center">
+							<button class="btn btn-info mt-4 ms-3 mb-3" onclick="redireccionar(@item.idTrabajo)">Ver Postulantes</button>
+
+							<script>
+								function redireccionar(idTrabajo) {
+								window.location.href = '@Url.Action("VerPostulantes", "Home")' + '?idTrabajo=' + idTrabajo;
+								}
+							</script>
+
+						</div>
+						<hr>
+					</div>
+					@if (@item.estado == "Disponible")
+					{
+						<div class="card-footer bg-success text-white fw-bold text-center">
+							@item.estado
+						</div>
+					}
+					else
+					{
+						<div class="card-footer bg-danger text-white fw-bold text-center">
+							@item.estado
+						</div>
+					}
+
+				</div>
+			</div>
+		}
+	}
+	else{
+
+		<p class="text-center">No tienes trabajos publicados aún, dirígete a publicar uno.</p>
+
+	}
+
+</div>
+
+
+

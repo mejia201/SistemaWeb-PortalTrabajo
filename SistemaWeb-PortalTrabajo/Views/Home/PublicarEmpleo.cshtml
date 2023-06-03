@@ -1,0 +1,145 @@
+﻿@model List<SistemaWeb_PortalTrabajo.Models.Categoria>
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+	@if (ViewBag.TrabajoGuardadoExitoso != null && (bool)ViewBag.TrabajoGuardadoExitoso)
+	{
+	<div id="alerta" class="alert alert-success">
+		Se creo el empleo exitosamente.
+
+	</div>
+
+	<script>
+
+		var alerta = document.getElementById('alerta');
+
+		alerta.style.display = 'block';
+
+		setTimeout(function () {
+			alerta.style.display = 'none';
+		}, 30000);
+	</script>
+
+	<style>
+
+		.alert {
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+		}
+
+			.alert.show {
+				opacity: 1;
+			}
+
+	</style>
+
+
+	}
+
+<div class="container text-center">
+
+	<div class="mb-1">
+		<h4 class="d-inline-block align-middle mr-3 mt-1">Aqui podras publicar un empleo, Llena todos los campos que se te solicitan.</h4>
+	</div>
+
+</div>
+
+<div style="justify-content: center; align-items: center; height: 100vh;">
+	<div class="py-5 text-center">
+		<div class="panel panel-info">
+			<div style="padding-top: 10px" class="panel-body">
+				<div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+				<form id="loginform" class="form-horizontal" role="form" action="@Url.Action("PublicarEmpleo", "Home")" method="post">
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="titulo" class="form-label">Titulo:</label>
+							<input type="text" class="form-control" name="titulo" value="" placeholder="Titulo del Empleo" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="descripcion" class="form-label">Descripcion:</label>
+							<input type="text" class="form-control" name="descripcion" value="" placeholder="Descripcion del Empleo" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="requisitos" class="form-label">Requisitos:</label>
+							<input type="text" class="form-control" name="requisitos" value="" placeholder="Requisitos para aplicar al Empleo" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="ubicacion" class="form-label">Ubicacion:</label>
+							<input type="text" class="form-control" name="ubicacion" value="" placeholder="Ubicacion del Empleo" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="salario" class="form-label">Salario:</label>
+							<input type="number" class="form-control" name="salario" value="" placeholder="Salario mensual del Empleo" required>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="tipoContrato" class="form-label">Tipo Contrato:</label>
+							<input type="text" class="form-control" name="tipoContrato" value="" placeholder="Tipo del Contrato para aplicar al Empleo" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 text-center mb-3">
+							<label for="idCategoria" class="form-label">Categoría:</label>
+							@Html.DropDownList("idCategoria", new SelectList(Model, "idCategoria", "nombre"), "Seleccione una categoría", new { @class = "form-control" })
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<input type="submit" value="Publicar Empleo" class="btn btn-primary mt-3">
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<style>
+
+
+		.styled-dropdown {
+			/* Estilos generales */
+			padding: 8px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			font-size: 14px;
+			color: #333;
+			cursor: pointer;
+			background-color: #f9f9f9;
+			transition: background-color 0.3s ease;
+		}
+
+			.styled-dropdown:hover {
+				background-color: #e9e9e9;
+			}
+
+			.styled-dropdown:focus {
+				outline: none;
+				box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+			}
+
+
+			.styled-dropdown select {
+				top: initial;
+				bottom: initial;
+			}
+
+	</style>
+
+
+

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 
 namespace SistemaWeb_PortalTrabajo.Models
@@ -14,5 +15,10 @@ namespace SistemaWeb_PortalTrabajo.Models
         public string? educacion { get; set; }
         public string? habilidades { get; set; }
         public string? certificaciones { get; set; }
-    }
+
+
+		[ForeignKey("idUsuario")]
+		public Usuario Usuario { get; set; }
+
+	}
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 
 namespace SistemaWeb_PortalTrabajo.Models
@@ -14,6 +15,13 @@ namespace SistemaWeb_PortalTrabajo.Models
         public DateTime? FechaSolicitud { get; set; }
 
         public string? Estado { get; set; }
+
+
+		[ForeignKey("idUsuario")]
+		public Usuario Usuario { get; set; }
+
+		[ForeignKey("idTrabajo")]
+		public Trabajo Trabajo { get; set; }
 
 
     }

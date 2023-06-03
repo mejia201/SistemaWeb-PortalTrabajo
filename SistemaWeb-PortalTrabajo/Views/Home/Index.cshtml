@@ -63,9 +63,8 @@
           <a href="#"><span>@ViewBag.TableEmpresa</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
 
-              <li><a asp-controller="Home" asp-action="LoginEmpresa">Login</a></li>
-              <li><a asp-controller="Home" asp-action="SignUpEmpresa">Registro</a></li>
-              <li><a asp-controller="Home" asp-action="Index">Opcion 3</a></li>
+              <li><a asp-controller="Home" asp-action="LoginEmpresa">Iniciar Sesión</a></li>
+              <li><a asp-controller="Home" asp-action="SignUpEmpresa">Registrarse</a></li>
               
             </ul>
           </li>
@@ -189,11 +188,11 @@
                     <div class="col-lg-6 col-md-3 d-flex align-items-stretch">
 					@foreach (var empresaCantidad in ViewBag.EmpresasConCantidad)
 					{
-                            <div class="icon-box border border-warning" style="margin: 10px; padding: 10px;">
+                            <div class="icon-box border border-warning" style="margin: 20px; padding: 30px">
                                 <div class="icon"><i class="bx bx-arch"></i></div>
                                 <h4><a class="text-center fw-bold">@empresaCantidad.Empresa.nombre_empresa</a></h4>
                                 <div class="d-flex align-items-center">
-                                    <p class="text-center ms-2" style="text-align: center !important;">Empleos publicados </p>
+                                    <p class="ms-2" style="text-align: left !important;">Empleos publicados </p>
                                     <span class="badge bg-primary rounded-pill" style="position: relative; top: -10px">@empresaCantidad.CantidadTrabajos</span>
                                 </div>
                             </div>
@@ -232,6 +231,7 @@
                                     </ul>
                                     <div class="text-center">
                                         <button class="btn btn-primary mt-4 mb-3 accordion" data-target="#collapse-@item.idTrabajo">Detalle</button>
+                                        <button class="btn btn-warning mt-4 ms-3 mb-3" onclick="window.location.href = '@Url.Action("Login", "Home")'">Postularme</button>
 
                                     </div>
                                     <hr>
@@ -375,7 +375,7 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-person-circle"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalUsuarios" data-purecounter-duration="3" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalUsuarios" data-purecounter-duration="2" class="purecounter"></span>
                     <p><strong>Usuarios: </strong> La cantidad de usuarios registrados en nuestro sitio web.</p>
                   </div>
                 </div>
@@ -383,7 +383,7 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-building"></i>
-                   <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalEmpresas" data-purecounter-duration="3" class="purecounter"></span>
+                   <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalEmpresas" data-purecounter-duration="2" class="purecounter"></span>
                     <p><strong>Empresas: </strong> Cantidad de empresas registradas que ofrecen sus empleos a nuestros usuarios.</p>
                   </div>
                 </div>
@@ -391,7 +391,7 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                   <i class="bi bi-card-checklist"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalCategorias" data-purecounter-duration="3" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalCategorias" data-purecounter-duration="2" class="purecounter"></span>
                     <p><strong>Categorias: </strong> Número de categorias que se encuentran para realizar búsquedas de empleos.</p>
                   </div>
                 </div>
@@ -399,7 +399,7 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-award"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalTrabajos" data-purecounter-duration="3" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.TotalTrabajos" data-purecounter-duration="2" class="purecounter"></span>
                     <p><strong>Empleos: </strong> Cantidad de empleos encontrados en nuestra página</p>
                   </div>
                 </div>

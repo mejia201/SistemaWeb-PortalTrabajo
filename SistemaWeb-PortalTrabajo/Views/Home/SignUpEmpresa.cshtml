@@ -4,4 +4,87 @@
 
 }
 
+<head>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+	<link rel="shortcut icon" type="image/png" href="~/icono_principal.png" />
+
+	<link href="~/css/styles.css" rel="stylesheet" />
+
+	<title>Registro - Empresas</title>
+
+
+</head>
+
+
+
+<body style="background-color: #F8F9FA; display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+
+	<div class="container text-center flex-grow-1">
+
+		<h3 class="well text-center" style="color: blue;">
+			<i class="fas fa-building" style="margin-right: 10px;"></i> Completa todos los datos solicitados
+		</h3>
+
+	<div class="col-lg-12 well">
+		<div class="row">
+				<form action="@Url.Action("SignUpEmpresa", "Home")" method="post">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<label>Nombre de la empresa</label>
+								<input type="text" name="nombre_empresa" placeholder="Nombre de Empresa" class="form-control" required>
+						</div>
+						<div class="col-sm-6 form-group">
+							<label>Correo</label>
+								<input type="email" name="correo_empresa" placeholder="Indroduce un correo válido" class="form-control" required>
+						</div>
+					</div>
+	
+					<div class="row">
+						<div class="col-sm-4 form-group">
+							<label>Contraseña</label>
+								<input type="password" name="clave_empresa" placeholder="Introduce una contraseña" class="form-control" required>
+						</div>
+						<div class="col-sm-4 form-group">
+								<label>Sitio web (opcional)</label>
+								<input type="text" name="sitio_web" placeholder="Introduce el sitio web" class="form-control">
+						</div>
+						<div class="col-sm-4 form-group">
+							<label>Sector</label>
+								<input type="text" name="sector" placeholder="Introduce el sector" class="form-control" required>
+						</div>
+					</div>
+
+					<div class="row">
+							<div class="col-sm-6 form-group" style="margin-top: 20px;">
+								<label>Descripción</label>
+								<textarea name="descripcion_empresa" placeholder="Introduce una breve descripción" rows="3" class="form-control mb-5" required></textarea>
+						</div>
+							<div class="col-sm-6 form-group" style="margin-top: 20px;">
+								<label>Ubicación</label>
+								<input type="text" name="ubicacion_empresa" placeholder="Introduce la ubicación" class="form-control" required>
+						</div>
+					</div>
+
+						@if (ViewData["Mensaje"] != null)
+						{
+							<div class="alert alert-success" role="alert">
+								@ViewData["Mensaje"]
+							</div>
+						}
+
+
+
+						<button type="submit" class="btn btn-lg btn-info btn-block mb-5" style="margin-top: 30px; margin-bottom: 20px">Registrar empresa</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+</body>
