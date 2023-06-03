@@ -29,8 +29,10 @@ tipoContrato varchar(100),
 fechaPublicacion datetime default getdate(),
 fechaVencimiento datetime,
 idEmpresa int,
+idCategoria int,
 estado varchar(20), --Disponible, No disponible
-CONSTRAINT FK_Empresa_Trabajo FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa)
+CONSTRAINT FK_Empresa_Trabajo FOREIGN KEY (idEmpresa) REFERENCES Empresa(idEmpresa),
+CONSTRAINT FK_Categoria_Trabajo FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria)
 );
 go
 
@@ -80,22 +82,22 @@ nombre varchar(100),
 descripcion varchar(max)
 );
 
-CREATE TABLE Subcategoria(
-idSubcategoria int PRIMARY KEY IDENTITY,
-nombre varchar(100),
-descripcion varchar(max),
-idCategoria int,
-CONSTRAINT FK_Categoria_Subcategoria FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria)
-);
+--CREATE TABLE Subcategoria(
+--idSubcategoria int PRIMARY KEY IDENTITY,
+--nombre varchar(100),
+--descripcion varchar(max),
+--idCategoria int,
+--CONSTRAINT FK_Categoria_Subcategoria FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria)
+--);
 
 
-CREATE TABLE TrabajoSubcategoria(
-id int PRIMARY KEY IDENTITY,
-idTrabajo int,
-idSubcategoria int,
-CONSTRAINT FK_Trabajo_TrabajoSubcategoria FOREIGN KEY (idTrabajo) REFERENCES Trabajo(idTrabajo),
-CONSTRAINT FK_Subcategoria_TrabajoSubcategoria FOREIGN KEY (idSubcategoria) REFERENCES Subcategoria(idSubcategoria)
-);
+--CREATE TABLE TrabajoSubcategoria(
+--id int PRIMARY KEY IDENTITY,
+--idTrabajo int,
+--idSubcategoria int,
+--CONSTRAINT FK_Trabajo_TrabajoSubcategoria FOREIGN KEY (idTrabajo) REFERENCES Trabajo(idTrabajo),
+--CONSTRAINT FK_Subcategoria_TrabajoSubcategoria FOREIGN KEY (idSubcategoria) REFERENCES Subcategoria(idSubcategoria)
+--);
 
 
 CREATE TABLE Valoracion(
@@ -121,27 +123,26 @@ VALUES ('XYZ Corporation', 'XYZCorporation@gmail.com', 'XYZCorporation',  'Empre
 
 
 
+INSERT INTO Trabajo (titulo, descripcion, requisitos, ubicacion, salario, tipoContrato, fechaVencimiento, idEmpresa, idCategoria, estado)
+VALUES ('Gerente de ventas', 'Se requiere un gerente de ventas con habilidades de liderazgo y experiencia en el área comercial.', 'Mínimo 5 años de experiencia en ventas y habilidades de liderazgo comprobadas.', 'San Salvador, El Salvador', 8000.00, 'Tiempo completo', '2023-06-30', 1, 3,  'Disponible');
 
-INSERT INTO Trabajo (titulo, descripcion, requisitos, ubicacion, salario, tipoContrato, fechaVencimiento, idEmpresa, estado)
-VALUES ('Gerente de ventas', 'Se requiere un gerente de ventas con habilidades de liderazgo y experiencia en el área comercial.', 'Mínimo 5 años de experiencia en ventas y habilidades de liderazgo comprobadas.', 'San Salvador, El Salvador', 8000.00, 'Tiempo completo', '2023-06-30', 1, 'Disponible');
 
-
-INSERT INTO Trabajo (titulo, descripcion, requisitos, ubicacion, salario, tipoContrato, fechaVencimiento, idEmpresa, estado)
+INSERT INTO Trabajo (titulo, descripcion, requisitos, ubicacion, salario, tipoContrato, fechaVencimiento, idEmpresa, idCategoria, estado)
 VALUES ('Desarrollador de software', 'Buscamos un desarrollador de software con experiencia en Java y Python.', 
 'Experiencia mínima de 2 años en desarrollo de software. Conocimientos de Java y Python.', 'Santa Ana, El Salvador', 5000.00, 
-'Tiempo completo', '2023-06-30', 1, 'Disponible');
+'Tiempo completo', '2023-06-30', 1, 1, 'Disponible');
 
 
+INSERT INTO Trabajo (titulo, descripcion, requisitos, ubicacion, salario, tipoContrato, fechaVencimiento, idEmpresa, idCategoria, estado)
+VALUES ('Diseñador gráfico', 'Estamos buscando un diseñador gráfico creativo y talentoso.', 
+'Experiencia en diseño gráfico y manejo de herramientas como Adobe Photoshop e Illustrator.', 'Santa Ana, El Salvador', 
+3000.00, 'Medio tiempo', '2023-07-15', 2, 2, 'Disponible');
 
-INSERT INTO Trabajo (titulo, descripcion, requisitos, ubicacion, salario, tipoContrato, fechaVencimiento, idEmpresa, estado)
-VALUES ('Diseñador gráfico', 'Estamos buscando un diseñador gráfico creativo y talentoso.', 'Experiencia en diseño gráfico y manejo de herramientas como Adobe Photoshop e Illustrator.', 'Santa Ana, El Salvador', 
-3000.00, 'Medio tiempo', '2023-07-15', 2, 'Disponible');
 
-
-INSERT INTO Trabajo (titulo, descripcion, requisitos, ubicacion, salario, tipoContrato, fechaVencimiento, idEmpresa, estado)
+INSERT INTO Trabajo (titulo, descripcion, requisitos, ubicacion, salario, tipoContrato, fechaVencimiento, idEmpresa, idCategoria, estado)
 VALUES ('Desarrollador de software', 'Empresa líder busca un desarrollador de software con experiencia en Java', 
 'Licenciatura en Ciencias de la Computación, experiencia mínima de 2 años en desarrollo de software', 
-'La Union, El Salvador', 5000.00, 'Tiempo completo', '2023-06-30', 1, 'Disponible');
+'La Union, El Salvador', 5000.00, 'Tiempo completo', '2023-06-30', 1, 1,'Disponible');
 
 
 
@@ -190,7 +191,6 @@ VALUES ('Transporte', 'Categoría relacionada con trabajos en el campo de la log
 
 
 
-
 --PROCEDIMIENTOS
 
 CREATE OR ALTER PROCEDURE sp_RegistrarUsuario (@nombre varchar(50),@apellido varchar(50),
@@ -234,9 +234,25 @@ END;
 CREATE OR ALTER PROCEDURE sp_ValidarUsuario(@correo VARCHAR(100), @clave VARCHAR(20))
 AS
 BEGIN
-    IF(exists(SELECT * FROM Usuario WHERE correo = @correo AND clave = @clave))
-	   SELECT idUsuario, nombre, apellido, correo FROM Usuario WHERE correo = @correo AND clave = @clave;
 
+    IF(exists(SELECT * FROM Usuario WHERE correo = @correo AND clave = @clave))
+	BEGIN
+
+
+    SELECT
+            u.idUsuario,
+            u.nombre,
+            u.apellido,
+            u.correo,
+            ISNULL((
+                SELECT idCurriculum
+                FROM Curriculum c
+                WHERE c.idUsuario = u.idUsuario
+            ), 0) AS idCurriculum
+        FROM Usuario u
+        WHERE u.correo = @correo AND u.clave = @clave;
+       
+		END
     ELSE
 	    SELECT '0'
 
